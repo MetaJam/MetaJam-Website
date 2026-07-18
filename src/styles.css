@@ -446,6 +446,10 @@ h3 {
   align-items: flex-start;
 }
 
+.hero-copy h1 {
+  margin-left: -0.045em;
+}
+
 .hero-copy::before {
   display: block;
   width: 112px;

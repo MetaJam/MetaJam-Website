@@ -122,7 +122,7 @@ function renderScreenshots(items) {
   if (!screenshotsTrack) return;
   galleryItems = items;
   if (!items.length) {
-    renderState(screenshotsTrack, "empty-state", "Screenshots will appear here after image files are added to the screenshots folder.");
+    renderState(screenshotsTrack, "empty-state", "Coming soon.");
     return;
   }
 
