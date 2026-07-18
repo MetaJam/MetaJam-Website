@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex">
+    <meta name="theme-color" content="#f6f8fb">
+    <title>Page not found - MetaJam Docs</title>
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+      (() => {
+        try {
+          const savedTheme = localStorage.getItem("metajam-theme");
+          const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+          document.documentElement.dataset.theme = savedTheme || systemTheme;
+        } catch {
+          document.documentElement.dataset.theme = "dark";
+        }
+      })();
+    </script>
+    <link rel="stylesheet" href="/styles.css?v=20260718-citation-nav-docs">
+  </head>
+  <body class="error-page">
+    <main class="error-shell" aria-labelledby="error-title">
+      <div class="error-content">
+        <p class="error-code">404</p>
+        <h1 id="error-title">Page not found</h1>
+        <p>The address does not match a published MetaJam Docs page.</p>
+        <div class="button-row">
+          <a class="button primary" href="/">
+            <span class="button-icon home-mark" aria-hidden="true"></span>
+            <span>Back to home page</span>
+          </a>
+          <a class="button secondary" href="/docs">Back to docs</a>
+        </div>
+      </div>
+      <figure class="error-visual" aria-label="MetaJam logo">
+        <a class="error-logo-stage" href="/" aria-label="Return to MetaJam home">
+          <img src="/assets/analysis-metajam.svg" alt="" width="296" height="176">
+        </a>
+      </figure>
+    </main>
+  </body>
+</html>

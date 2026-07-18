@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="MetaJam is a meta-analysis module for jamovi, powered mainly by the R package meta.">
+    <meta name="theme-color" content="#f6f8fb">
+    <title>MetaJam Docs</title>
+    <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preload" href="./assets/analysis-metajam.svg" as="image">
+    <script>
+      (() => {
+        try {
+          const savedTheme = localStorage.getItem("metajam-theme");
+          const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+          document.documentElement.dataset.theme = savedTheme || systemTheme;
+        } catch {
+          document.documentElement.dataset.theme = "dark";
+        }
+      })();
+    </script>
+    <link rel="stylesheet" href="./styles.css?v=20260718-citation-nav-docs">
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-nav" aria-label="Site navigation">
+      <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch color mode" aria-pressed="false">
+        <span class="theme-toggle-icon" aria-hidden="true"></span>
+      </button>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#metajam">MetaJam</a>
+        <a href="#analyses">Analyses</a>
+        <a href="#releases">Releases</a>
+        <a href="#screenshots">Screenshots</a>
+        <a href="#support">Support</a>
+        <a href="#citation">Citation</a>
+      </nav>
+    </header>
+
+    <main id="main">
+      <section id="metajam" class="section hero reveal" data-layout-family="asymmetric split hero">
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <h1>MetaJam</h1>
+            <p>Meta-analysis for jamovi, powered mainly by the R package meta.</p>
+            <div class="hero-notice" aria-label="License and DOI">
+              <span class="notice-chip">
+                <svg class="notice-icon" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M12 3.25 18.5 6v5.35c0 4.2-2.65 7.3-6.5 9.4-3.85-2.1-6.5-5.2-6.5-9.4V6L12 3.25Z" />
+                  <path d="m8.8 12.25 2.05 2.05 4.55-4.7" />
+                </svg>
+                <span>GPL &gt;= 2</span>
+              </span>
+              <a class="notice-chip" href="https://doi.org/10.5281/zenodo.21226177" target="_blank" rel="noreferrer">
+                <svg class="notice-icon" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M6.5 4.75h11A1.75 1.75 0 0 1 19.25 6.5v11a1.75 1.75 0 0 1-1.75 1.75h-11A1.75 1.75 0 0 1 4.75 17.5v-11A1.75 1.75 0 0 1 6.5 4.75Z" />
+                  <path d="M8.75 9.25h6.5M8.75 12h6.5M8.75 14.75h3.75" />
+                </svg>
+                <span>DOI 10.5281/zenodo.21226177</span>
+              </a>
+            </div>
+            <div class="button-row" aria-label="MetaJam actions">
+              <button class="button primary is-disabled" type="button" disabled>Docs coming soon</button>
+              <a class="button secondary" href="#releases">Releases</a>
+              <a class="icon-link" href="https://github.com/MetaJam/MetaJam" target="_blank" rel="noreferrer" aria-label="Open MetaJam on GitHub">
+                <svg class="github-icon" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M12 .7a11.3 11.3 0 0 0-3.6 22c.6.1.8-.2.8-.6v-2.1c-3.3.7-4-1.4-4-1.4-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 .1.7 1.5 2.8 1.1.1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.6.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.6 3.4 18.6 3.7 18.6 3.7c.6 1.6.2 2.9.1 3.2.8.9 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.5.4.9 1.1.9 2.2v3.2c0 .4.2.7.8.6A11.3 11.3 0 0 0 12 .7Z" />
+                </svg>
+              </a>
+            </div>
+          </div>
+          <figure class="hero-media" aria-label="MetaJam logo">
+            <img src="./assets/analysis-metajam.svg" alt="MetaJam logo" width="296" height="176">
+          </figure>
+        </div>
+      </section>
+
+      <section id="analyses" class="section analyses reveal" data-layout-family="consolidated analysis overview">
+        <div class="section-copy">
+          <h2>Analyses</h2>
+          <p>Two-group meta-analysis and the main analysis options in one compact overview.</p>
+        </div>
+        <div class="analysis-overview">
+          <article class="analysis-card">
+            <span class="card-kicker">Two-Group Meta-Analysis</span>
+            <dl class="feature-list">
+              <div>
+                <dt>Continuous Outcomes</dt>
+                <dd>Analyze continuous outcome data using mean, standard deviation, and sample size for the experimental and control groups.</dd>
+              </div>
+              <div>
+                <dt>Binary Outcomes</dt>
+                <dd>Analyze binary outcome data using event counts and sample size for the experimental and control groups.</dd>
+              </div>
+            </dl>
+          </article>
+
+          <article id="analysis-options" class="analysis-card">
+            <span class="card-kicker">Analysis Options</span>
+            <dl class="feature-list">
+              <div>
+                <dt>Model Settings</dt>
+                <dd>Fit common-effect and random-effects models with various effect measures and heterogeneity estimators.</dd>
+              </div>
+              <div>
+                <dt>Subgroup Analysis</dt>
+                <dd>Compare effects and test for differences across subgroups.</dd>
+              </div>
+              <div>
+                <dt>Meta-Regression</dt>
+                <dd>Fit meta-regression models to explore the effect of continuous and categorical predictors.</dd>
+              </div>
+              <div>
+                <dt>Leave-One-Out Analysis</dt>
+                <dd>Evaluate the influence of individual studies by omitting them one at a time.</dd>
+              </div>
+              <div>
+                <dt>Publication Bias</dt>
+                <dd>Assess publication bias using funnel plots, trim-and-fill analysis, and the Doi plot / LFK index.</dd>
+              </div>
+            </dl>
+          </article>
+        </div>
+      </section>
+
+      <section id="releases" class="section releases reveal" data-layout-family="release card scroll rail">
+        <div class="section-copy">
+          <h2>Release notes</h2>
+        </div>
+        <div class="scroll-region">
+          <div class="card-track" id="releaseTrack" aria-live="polite">
+            <article class="skeleton-card" aria-hidden="true"></article>
+            <article class="skeleton-card" aria-hidden="true"></article>
+          </div>
+        </div>
+      </section>
+
+      <section id="screenshots" class="section screenshots reveal" data-layout-family="media scroll rail with dialog">
+        <div class="section-copy">
+          <h2>Screenshots</h2>
+          <p>Place images in the screenshots folder before deployment and the gallery will build itself.</p>
+        </div>
+        <div class="scroll-region">
+          <div class="media-track" id="screenshotsTrack" aria-live="polite">
+            <article class="skeleton-media" aria-hidden="true"></article>
+            <article class="skeleton-media" aria-hidden="true"></article>
+          </div>
+        </div>
+      </section>
+
+      <section id="support" class="section support reveal" data-layout-family="stacked contact rail">
+        <div class="section-copy">
+          <h2>Help &amp; support</h2>
+          <p>This module is actively being developed. Questions, issues, and feature ideas are welcome.</p>
+        </div>
+        <div class="support-rail">
+          <a class="support-link" href="https://github.com/MetaJam/MetaJam/issues" target="_blank" rel="noreferrer">
+            <span>Open issue</span>
+            <small>Use GitHub for reproducible reports and feature ideas.</small>
+          </a>
+          <a class="support-link" href="mailto:metajamteam@gmail.com">
+            <span>Email team</span>
+            <small>Use email for questions that are better handled directly.</small>
+          </a>
+        </div>
+      </section>
+
+      <section id="citation" class="section citation reveal" data-layout-family="closing citation panel">
+        <div class="citation-panel">
+          <div class="citation-icons" aria-hidden="true">
+            <span class="citation-icon star-mark"></span>
+            <span class="citation-icon cite-mark"></span>
+          </div>
+          <div class="citation-copy">
+            <h2 class="nowrap-heading">Citation &amp; star</h2>
+            <p>If MetaJam helps your research or work, cite the module and star the GitHub repository.</p>
+          </div>
+          <div class="button-row citation-actions">
+            <a class="button primary citation-button" href="https://github.com/MetaJam/MetaJam" target="_blank" rel="noreferrer">
+              <span class="button-icon star-mark" aria-hidden="true"></span>
+              <span>Star on GitHub</span>
+            </a>
+            <button class="button secondary citation-button" type="button" data-citation-open>
+              <span class="button-icon cite-mark" aria-hidden="true"></span>
+              <span>How to cite</span>
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <dialog class="gallery-dialog" id="galleryDialog" aria-label="Screenshot preview">
+      <div class="gallery-frame">
+        <button class="dialog-close" type="button" data-dialog-close aria-label="Close preview">&times;</button>
+        <button class="gallery-nav previous" type="button" data-gallery-previous aria-label="Previous screenshot">&lsaquo;</button>
+        <img id="dialogImage" alt="">
+        <button class="gallery-nav next" type="button" data-gallery-next aria-label="Next screenshot">&rsaquo;</button>
+        <p id="dialogTitle"></p>
+      </div>
+    </dialog>
+
+    <dialog class="citation-dialog" id="citationDialog" aria-labelledby="citationDialogTitle">
+      <div class="citation-dialog-panel">
+        <button class="dialog-close citation-close" type="button" data-citation-close aria-label="Close citation dialog">&times;</button>
+        <span class="dialog-kicker">Citation</span>
+        <h2 id="citationDialogTitle" class="nowrap-heading">How to cite</h2>
+        <p>Use this formatted citation in manuscripts, reports, or reference managers.</p>
+        <div class="citation-output" data-citation-text aria-live="polite">Citation details are loading.</div>
+        <div class="button-row citation-dialog-actions">
+          <a class="button primary" data-citation-download href="./assets/generated/CITATION.cff" download>Download CITATION.cff</a>
+        </div>
+      </div>
+    </dialog>
+
+    <script src="./app.js?v=20260718-citation-nav-docs" type="module"></script>
+  </body>
+</html>

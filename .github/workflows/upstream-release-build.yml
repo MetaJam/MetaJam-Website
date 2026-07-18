@@ -1,0 +1,22 @@
+name: Trigger Cloudflare Pages build
+
+on:
+  repository_dispatch:
+    types:
+      - metajam-release
+  workflow_dispatch:
+
+jobs:
+  trigger-cloudflare-pages:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Cloudflare Pages deploy hook
+        env:
+          CLOUDFLARE_PAGES_DEPLOY_HOOK: ${{ secrets.CLOUDFLARE_PAGES_DEPLOY_HOOK }}
+        run: |
+          if [ -z "$CLOUDFLARE_PAGES_DEPLOY_HOOK" ]; then
+            echo "Missing CLOUDFLARE_PAGES_DEPLOY_HOOK repository secret." >&2
+            exit 1
+          fi
+
+          curl --fail --request POST "$CLOUDFLARE_PAGES_DEPLOY_HOOK"
