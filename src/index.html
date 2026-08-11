@@ -41,7 +41,7 @@
     </header>
 
     <main id="main">
-      <section id="metajam" class="section hero reveal" data-layout-family="asymmetric split hero">
+      <section id="metajam" class="section hero" data-layout-family="asymmetric split hero">
         <div class="hero-grid">
           <div class="hero-copy">
             <h1>MetaJam</h1>
@@ -78,24 +78,33 @@
         </div>
       </section>
 
-      <section id="analyses" class="section analyses reveal" data-layout-family="consolidated analysis overview">
+      <section id="analyses" class="section analyses" data-layout-family="consolidated analysis overview">
         <div class="section-copy">
           <h2>Analyses</h2>
-          <p>Two-group meta-analysis and the main analysis options in one compact overview.</p>
+          <p>Available meta-analysis workflows and the main analysis options in one compact overview.</p>
         </div>
         <div class="analysis-overview">
           <article class="analysis-card">
-            <span class="card-kicker">Two-Group Meta-Analysis</span>
-            <dl class="feature-list">
-              <div>
-                <dt>Continuous Outcomes</dt>
-                <dd>Analyze continuous outcome data using mean, standard deviation, and sample size for the experimental and control groups.</dd>
-              </div>
-              <div>
-                <dt>Binary Outcomes</dt>
-                <dd>Analyze binary outcome data using event counts and sample size for the experimental and control groups.</dd>
-              </div>
-            </dl>
+            <span class="card-kicker">Available Analyses</span>
+            <div class="analysis-entity-list">
+              <section class="analysis-entity" aria-labelledby="two-group-analysis-title">
+                <h3 id="two-group-analysis-title">Two-Group</h3>
+                <dl class="feature-list nested-feature-list">
+                  <div>
+                    <dt>Continuous Outcomes</dt>
+                    <dd>Analyze continuous outcome data using mean, standard deviation, and sample size for the experimental and control groups.</dd>
+                  </div>
+                  <div>
+                    <dt>Binary Outcomes</dt>
+                    <dd>Analyze binary outcome data using event counts and sample size for the experimental and control groups.</dd>
+                  </div>
+                </dl>
+              </section>
+              <section class="analysis-entity" aria-labelledby="precomputed-analysis-title">
+                <h3 id="precomputed-analysis-title">Precomputed Effect Sizes</h3>
+                <p>Analyze precomputed effect sizes with standard errors or confidence intervals.</p>
+              </section>
+            </div>
           </article>
 
           <article id="analysis-options" class="analysis-card">
@@ -130,7 +139,7 @@
         </div>
       </section>
 
-      <section id="releases" class="section releases reveal" data-layout-family="release card scroll rail">
+      <section id="releases" class="section releases" data-layout-family="release card scroll rail">
         <div class="section-copy">
           <h2>Release notes</h2>
         </div>
@@ -142,7 +151,7 @@
         </div>
       </section>
 
-      <section id="screenshots" class="section screenshots reveal" data-layout-family="media scroll rail with dialog">
+      <section id="screenshots" class="section screenshots" data-layout-family="media scroll rail with dialog">
         <div class="section-copy">
           <h2>Screenshots</h2>
         </div>
@@ -154,24 +163,24 @@
         </div>
       </section>
 
-      <section id="support" class="section support reveal" data-layout-family="stacked contact rail">
+      <section id="support" class="section support" data-layout-family="stacked contact rail">
         <div class="section-copy">
           <h2>Help &amp; support</h2>
           <p>This module is actively being developed. Questions, issues, and feature ideas are welcome.</p>
         </div>
         <div class="support-rail">
           <a class="support-link" href="https://github.com/MetaJam/MetaJam/issues" target="_blank" rel="noreferrer">
-            <span>Open issue</span>
+            <span>Open an issue</span>
             <small>Use GitHub for reproducible reports and feature ideas.</small>
           </a>
           <a class="support-link" href="mailto:metajamteam@gmail.com">
-            <span>Email team</span>
+            <span>Email the team</span>
             <small>Use email for questions that are better handled directly.</small>
           </a>
         </div>
       </section>
 
-      <section id="citation" class="section citation reveal" data-layout-family="closing citation panel">
+      <section id="citation" class="section citation" data-layout-family="closing citation panel">
         <div class="citation-panel">
           <div class="citation-icons" aria-hidden="true">
             <span class="citation-icon star-mark"></span>

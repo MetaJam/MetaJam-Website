@@ -10,7 +10,6 @@ const citationOpen = document.querySelector("[data-citation-open]");
 const citationClose = document.querySelector("[data-citation-close]");
 const citationText = document.querySelector("[data-citation-text]");
 const citationDownload = document.querySelector("[data-citation-download]");
-const heroMedia = document.querySelector(".hero-media");
 const navLinks = document.querySelectorAll(".nav-links a[href^='#']");
 const themeToggle = document.querySelector("[data-theme-toggle]");
 const themeColorMeta = document.querySelector("meta[name='theme-color']");
@@ -199,56 +198,6 @@ function initCitationDialog() {
   });
 }
 
-function initReveal() {
-  document.body.classList.add("js");
-  const sections = document.querySelectorAll(".reveal");
-  if (!("IntersectionObserver" in window)) {
-    sections.forEach((section) => section.classList.add("is-visible"));
-    return;
-  }
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("is-visible");
-          observer.unobserve(entry.target);
-        }
-      });
-    },
-    { threshold: 0.16 }
-  );
-  sections.forEach((section) => observer.observe(section));
-}
-
-function initHeroScrollFloat() {
-  if (!heroMedia) return;
-  if (window.matchMedia("(any-pointer: coarse)").matches) return;
-  let ticking = false;
-
-  function updateLogoFloat() {
-    const rect = heroMedia.getBoundingClientRect();
-    const viewport = window.innerHeight || document.documentElement.clientHeight;
-    const centerDistance = rect.top + rect.height / 2 - viewport / 2;
-    const normalized = Math.max(-1, Math.min(1, centerDistance / Math.max(1, viewport / 2)));
-    const float = normalized * -18;
-    const scale = 1 + (1 - Math.abs(normalized)) * 0.035;
-
-    heroMedia.style.setProperty("--logo-float", `${float.toFixed(2)}px`);
-    heroMedia.style.setProperty("--logo-scale", scale.toFixed(3));
-    ticking = false;
-  }
-
-  function requestUpdate() {
-    if (ticking) return;
-    ticking = true;
-    window.requestAnimationFrame(updateLogoFloat);
-  }
-
-  updateLogoFloat();
-  window.addEventListener("scroll", requestUpdate, { passive: true });
-  window.addEventListener("resize", requestUpdate);
-}
-
 function setActiveNavigation(id) {
   navLinks.forEach((link) => {
     const isActive = link.getAttribute("href") === `#${id}`;
@@ -312,8 +261,6 @@ async function hydrateGeneratedContent() {
 }
 
 initThemeToggle();
-initReveal();
-initHeroScrollFloat();
 initActiveNavigation();
 initDialog();
 initCitationDialog();

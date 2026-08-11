@@ -29,6 +29,8 @@
   --shadow: 0 24px 70px rgba(30, 63, 92, 0.12);
   --shadow-soft: 0 14px 34px rgba(30, 63, 92, 0.1);
   --shadow-nav: 0 18px 50px rgba(20, 38, 58, 0.12);
+  --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --ease-emphasized: cubic-bezier(0.16, 1, 0.3, 1);
   --max: 1180px;
 }
 
@@ -307,9 +309,9 @@ a {
   text-shadow: 0 1px 18px var(--bg);
   transform: translateX(0);
   transition:
-    opacity 260ms ease,
-    color 260ms ease,
-    transform 260ms ease;
+    opacity 220ms var(--ease-standard),
+    color 220ms var(--ease-standard),
+    transform 220ms var(--ease-standard);
 }
 
 .nav-links a::after {
@@ -322,17 +324,17 @@ a {
   opacity: 0.65;
   transform: scale(0.72);
   transition:
-    background-color 260ms ease,
-    opacity 260ms ease,
-    transform 260ms ease,
-    box-shadow 260ms ease;
+    background-color 220ms var(--ease-standard),
+    opacity 220ms var(--ease-standard),
+    transform 220ms var(--ease-standard),
+    box-shadow 220ms var(--ease-standard);
 }
 
 .nav-links a:hover,
 .nav-links a.is-active {
   color: var(--heading);
   opacity: 1;
-  transform: translateX(-6px);
+  transform: translateX(-2px);
 }
 
 .nav-links a.is-active::after {
@@ -341,7 +343,7 @@ a {
     0 0 0 6px color-mix(in srgb, var(--accent) 15%, transparent),
     0 8px 24px color-mix(in srgb, var(--accent) 24%, transparent);
   opacity: 1;
-  transform: scale(1.16);
+  transform: scale(1.08);
 }
 
 .section {
@@ -629,8 +631,6 @@ h3 {
 }
 
 .hero-media {
-  --logo-float: 0px;
-  --logo-scale: 1;
   position: relative;
   margin: 0;
   overflow: hidden;
@@ -667,11 +667,10 @@ h3 {
   z-index: 1;
   width: min(56%, 390px);
   height: auto;
-  transform: translate(-50%, calc(-50% + var(--logo-float))) scale(var(--logo-scale));
+  transform: translate3d(-50%, -50%, 0);
   filter:
     drop-shadow(0 22px 36px color-mix(in srgb, var(--accent) 18%, transparent))
     drop-shadow(0 8px 18px color-mix(in srgb, var(--gold) 9%, transparent));
-  transition: transform 360ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .analysis-overview {
@@ -730,12 +729,47 @@ h3 {
   margin: 0;
 }
 
+.analysis-entity-list {
+  display: grid;
+  gap: 18px;
+}
+
+.analysis-entity {
+  border-top: 1px solid color-mix(in srgb, var(--line) 74%, transparent);
+  padding-top: 18px;
+}
+
+.analysis-entity h3 {
+  font-size: clamp(1.18rem, 2vw, 1.55rem);
+  line-height: 1.1;
+}
+
+.analysis-entity > p {
+  margin-top: 12px;
+  color: var(--muted);
+}
+
+.nested-feature-list {
+  gap: 10px;
+  margin-top: 12px;
+  padding-left: clamp(14px, 2vw, 22px);
+}
+
 .feature-list div {
   display: grid;
   grid-template-columns: minmax(148px, 0.45fr) minmax(0, 1fr);
   gap: 12px 20px;
   padding: 18px 0 0;
   border-top: 1px solid color-mix(in srgb, var(--line) 74%, transparent);
+}
+
+.nested-feature-list div {
+  padding-top: 12px;
+  border-top-color: color-mix(in srgb, var(--line) 48%, transparent);
+}
+
+.nested-feature-list div:first-child {
+  border-top: 0;
 }
 
 .feature-list dt {
@@ -822,16 +856,16 @@ h3 {
 .release-card,
 .screenshot-card {
   transition:
-    border-color 200ms ease,
-    box-shadow 200ms ease,
-    transform 200ms ease;
+    border-color 200ms var(--ease-standard),
+    box-shadow 200ms var(--ease-standard),
+    transform 200ms var(--ease-standard);
 }
 
 .release-card:hover,
 .screenshot-card:hover {
   border-color: color-mix(in srgb, var(--accent) 64%, var(--line));
   box-shadow: var(--shadow);
-  transform: translateY(-2px);
+  transform: translateY(-1px);
 }
 
 .release-card::before,
@@ -960,9 +994,9 @@ h3 {
   padding: 26px;
   text-decoration: none;
   transition:
-    border-color 200ms ease,
-    box-shadow 200ms ease,
-    transform 200ms ease;
+    border-color 200ms var(--ease-standard),
+    box-shadow 200ms var(--ease-standard),
+    transform 200ms var(--ease-standard);
 }
 
 .support-link span {
@@ -981,7 +1015,7 @@ h3 {
 .support-link:hover {
   border-color: var(--accent);
   box-shadow: var(--shadow);
-  transform: translateY(-2px);
+  transform: translateY(-1px);
 }
 
 .citation-panel {
@@ -1381,32 +1415,9 @@ h3 {
   transform: translateY(-1px);
 }
 
-.reveal {
-  opacity: 1;
-}
-
-body.js .reveal {
-  opacity: 0;
-  transform: translateY(26px);
-}
-
-body.js .reveal.is-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
 @media (prefers-reduced-motion: no-preference) {
-  .reveal,
-  .button,
-  .support-link,
-  .dialog-close {
-    transition:
-      opacity 620ms cubic-bezier(0.16, 1, 0.3, 1),
-      transform 620ms cubic-bezier(0.16, 1, 0.3, 1),
-      border-color 180ms ease,
-      box-shadow 180ms ease,
-      background-color 180ms ease,
-      color 180ms ease;
+  .hero-media img {
+    animation: logoSettle 520ms var(--ease-emphasized) both;
   }
 
   .skeleton-card,
@@ -1414,22 +1425,33 @@ body.js .reveal.is-visible {
     animation: shimmer 1.4s ease-in-out infinite;
   }
 
-  .citation-icon.star-mark {
-    animation: starPulse 2.7s ease-in-out infinite;
+  .citation-panel:hover .citation-icon.star-mark {
+    animation: starPulse 520ms var(--ease-emphasized) both;
   }
 
-  .citation-icon.cite-mark::before {
-    animation: citeLift 3.2s ease-in-out infinite;
+  .citation-panel:hover .citation-icon.cite-mark::before {
+    animation: citeLift 520ms var(--ease-emphasized) both;
   }
 
   .citation-button:hover .button-icon.star-mark {
-    animation: starSpin 620ms ease both;
+    animation: starSpin 560ms var(--ease-emphasized) both;
   }
 
   .citation-button:hover .button-icon.cite-mark {
-    animation: citeWiggle 520ms ease both;
+    animation: citeWiggle 520ms var(--ease-emphasized) both;
   }
 
+}
+
+@keyframes logoSettle {
+  from {
+    opacity: 0.72;
+    transform: translate3d(-50%, calc(-50% + 10px), 0) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(-50%, -50%, 0) scale(1);
+  }
 }
 
 @keyframes shimmer {
@@ -1444,12 +1466,10 @@ body.js .reveal.is-visible {
 @keyframes starPulse {
   0%,
   100% {
-    filter: drop-shadow(0 0 0 rgba(246, 200, 76, 0));
-    transform: rotate(-3deg) scale(1);
+    transform: translateY(0) scale(1);
   }
   50% {
-    filter: drop-shadow(0 0 18px color-mix(in srgb, var(--gold) 55%, transparent));
-    transform: rotate(4deg) scale(1.06);
+    transform: translateY(-1px) scale(1.04);
   }
 }
 
@@ -1458,7 +1478,7 @@ body.js .reveal.is-visible {
     transform: rotate(0deg) scale(1);
   }
   70% {
-    transform: rotate(24deg) scale(1.22);
+    transform: rotate(12deg) scale(1.12);
   }
   100% {
     transform: rotate(0deg) scale(1);
@@ -1471,7 +1491,7 @@ body.js .reveal.is-visible {
     transform: translateY(0);
   }
   50% {
-    transform: translateY(-4px);
+    transform: translateY(-2px);
   }
 }
 
@@ -1481,10 +1501,10 @@ body.js .reveal.is-visible {
     transform: rotate(0deg);
   }
   40% {
-    transform: rotate(-8deg) translateY(-1px);
+    transform: rotate(-4deg) translateY(-1px);
   }
   70% {
-    transform: rotate(5deg);
+    transform: rotate(3deg);
   }
 }
 
@@ -1586,7 +1606,6 @@ body.js .reveal.is-visible {
       ),
       radial-gradient(circle at 50% 50%, color-mix(in srgb, var(--accent) 12%, transparent), transparent 68%);
     box-shadow: var(--shadow-nav);
-    backdrop-filter: blur(16px);
     content: "";
     opacity: 0.96;
   }

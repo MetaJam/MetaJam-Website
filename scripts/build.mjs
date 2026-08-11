@@ -75,6 +75,12 @@ function slugify(value) {
     .replace(/^-+|-+$/g, "");
 }
 
+function extractReleaseVersion(title) {
+  const version = title.match(/\bv?\d+\.\d+(?:\.\d+)?(?:[-+][0-9a-z.-]+)?\b/i);
+  if (version) return version[0].replace(/^v(?=\d)/i, "");
+  return title.replace(/^MetaJam(?:\s+version)?\s*/i, "").trim() || title;
+}
+
 function renderInline(markdown) {
   const links = [];
   let safe = escapeHtml(markdown).replace(/\[([^\]]+)]\(([^)]+)\)/g, (match, label, href) => {
@@ -153,11 +159,14 @@ function parseNews(markdown) {
 
   if (current) releases.push(current);
 
-  return releases.map((release) => ({
-    title: release.title,
-    slug: slugify(release.title),
-    html: renderMarkdown(release.lines)
-  }));
+  return releases.map((release) => {
+    const version = extractReleaseVersion(release.title);
+    return {
+      title: version,
+      slug: slugify(version),
+      html: renderMarkdown(release.lines)
+    };
+  });
 }
 
 function parseHeadings(markdown) {
